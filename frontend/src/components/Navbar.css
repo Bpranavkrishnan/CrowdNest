@@ -1,0 +1,184 @@
+/* Navbar General Styling */
+.custom-navbar {
+  background-color: rgba(255, 223, 239, 0.6);
+    padding: 20px 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: none;
+    border-radius: 10px 10px 36px 36px;
+  }
+  
+  .custom-navbar.scrolled {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: white;
+  }
+  
+  /* Center the Logo */
+  .logo-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .logo {
+    height: 35px;
+  }
+  
+  /* Left and Right Navigation */
+  .left-nav,
+  .right-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Navbar Links */
+  .nav-item {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333 !important;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  
+  .nav-item:hover {
+    color: #AA60C8 !important;
+  }
+  
+  /* Right-Aligned Buttons */
+  .nav-btn {
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 20px;
+    border: none;
+    background-color: #441752;
+    animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+    0% {
+      box-shadow: 0 0 8px #FFCF50;
+    }
+    100% {
+      box-shadow: 0 0 20px #69247C;
+    }
+    }
+  .nav-btn:hover {
+    background-color: #FFCF50 !important;
+  }
+  
+  /* Mobile View */
+  @media (max-width: 992px) {
+    .custom-navbar {
+      padding: 12px;
+    }
+  
+    .navbar-collapse {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .logo-container {
+      position: static;
+      transform: none;
+    }
+  
+    .navbar-nav {
+      text-align: center;
+    }
+  
+    .nav-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  .logo {
+    height: 65px; /* Adjust size */
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    padding: 8px 20px; /* Adjust spacing */
+  }
+  .announcement-bar {
+    background-color: #AA60C8;
+    color: white;
+    font-weight: 650;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1050;
+  }
+
+  /* Gradient blend below the announcement bar */
+  .announcement-bar::after {
+    content: "";
+    display: block;
+    height: 10px;
+    background: linear-gradient(to bottom, #AA60C8, rgba(255, 255, 255, 0));
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+  }
+  .donate-monthly-btn {
+    background: linear-gradient(45deg, #ff8d08, #e6f028);
+    background-size: 200% 200%;
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 8px 15px;
+    width: 190px;
+    border-radius: 20px;
+    animation: float 3s ease-in-out infinite, gradient-flow 5s ease infinite;
+    position: relative;
+    }
+
+    .donate-monthly-btn::before {
+      content: "\2665"; /* Unicode for heart symbol */
+      position: absolute;
+      left: 10px; /* Adjust left position */
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Center vertically */
+      font-size: 1.5rem; /* Increase size */
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    }
+
+ 
+
+  @keyframes gradient-flow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .donate-monthly-btn:hover {
+    background-color: #B771E5;
+  }
+  
+  .custom-navbar {
+    margin-top: 50px; /* Push navbar down to make space for announcement */
+  }
+  
+  
+    
