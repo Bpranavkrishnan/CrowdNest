@@ -1,52 +1,47 @@
-import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 import logo from "../assets/Crowdnestlogo.png";
 
 const NavigationBar = () => {
+  const { user, logout } = useContext(AuthContext);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <>
       {/* Announcement Bar */}
-      <div className="announcement-bar">
-        <span>
-          Be a savior for many. Donate monthly to help save invaluable lives in India.
-        </span>
-        
-        <Button variant="warning" className="donate-monthly-btn ms-2">
-           Donate Monthly
-        </Button>
+      <div className="announcement-bar text-center py-2">
+        <span>Be a savior for many. Donate monthly to help save invaluable lives in India.</span>
+        <Button variant="warning" className="donate-monthly-btn ms-2">Donate Monthly</Button>
       </div>
 
       {/* Navigation Bar */}
       <Navbar expand="lg" className={`custom-navbar ${scrolled ? "scrolled" : ""}`} fixed="top">
         <Container>
           <Navbar.Toggle aria-controls="navbarNav" />
-
           <Navbar.Collapse id="navbarNav" className="d-flex justify-content-between w-100">
-            {/* Left Side Navigation */}
-            <Nav className="left-nav d-flex align-items-center">
-              <Nav.Link as={Link} to="/search" className="nav-item">Search</Nav.Link>
-              <NavDropdown title="Donate" id="donate-dropdown" className="nav-item">
-                <NavDropdown.Item as={Link} to="/donate/medical">Medical</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/donate/emergency">Emergency</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/donate/education">Education</NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Fundraise" id="fundraise-dropdown" className="nav-item">
-                <NavDropdown.Item as={Link} to="/fundraise/how-it-works">How It Works</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/fundraise/categories">Categories</NavDropdown.Item>
-              </NavDropdown>
+            
+            {/* Left Navigation Links */}
+            <Nav className="left-nav d-flex align-items-center gap-3">
+              <Nav.Link as={Link} to="/home" className="nav-item">Home</Nav.Link>
+              <Nav.Link as={Link} to="/campaigns" className="nav-item">Campaigns</Nav.Link>
+              <Nav.Link as={Link} to="/contact" className="nav-item">ContactUs</Nav.Link>
+             
             </Nav>
 
             {/* Centered Logo */}
@@ -54,22 +49,28 @@ const NavigationBar = () => {
               <img src={logo} alt="CrowdNest" className="logo" />
             </Navbar.Brand>
 
-            {/* Right Side Navigation */}
-            <Nav className="right-nav d-flex align-items-center">
-              <NavDropdown title="About" id="about-dropdown" className="nav-item">
-                <NavDropdown.Item as={Link} to="/about/team">Our Team</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/about/mission">Our Mission</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link as={Link} to="/login" className="nav-item">Sign in</Nav.Link>
-              <Button as={Link} to="/start-fundraiser"  className="Navbutton ms-3 nav-btn">
-                Start a GoFundMe
-              </Button>
+            {/* Right Navigation (Profile, Logout, etc.) */}
+            <Nav className="right-nav d-flex align-items-center gap-3">
+              <Nav.Link as={Link} to="/about" className="nav-item">About Us</Nav.Link>
+
+              {user ? (
+                <>
+                  {/* Redirect Profile to Dashboard */}
+                  <Nav.Link as={Link} to="/dashboard/:id" className="nav-item">Profile</Nav.Link>
+                  <Nav.Link onClick={handleLogout} className="nav-item" style={{ cursor: "pointer" }}>Logout</Nav.Link>
+                  <Button as={Link} to="/create" className="Navbutton nav-btn">
+                    Make a FundRaise
+                  </Button>
+                </>
+              ) : (
+                <Nav.Link as={Link} to="/login" className="nav-item">Sign in</Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      {/* Add padding to prevent navbar overlap */}
+      {/* Spacer to prevent content from overlapping with navbar */}
       <div style={{ marginTop: "100px" }}></div>
     </>
   );

@@ -1,0 +1,143 @@
+/* General Page Styling */
+.login-page {
+  flex-wrap: wrap;
+  display: flex;
+  border-radius: 60px;
+  margin-left: 60px;
+  margin-top: 150px;
+  margin-bottom: 110px;
+  height: 100vh;
+  width: 90%;
+  background: linear-gradient(135deg, #FFDFEF, rgb(237, 232, 232));
+  
+    position: relative;
+    overflow: visible !important;
+    z-index: 1000;
+    font-family: "Popins", sans-serif;
+}
+
+/* Left Section Styling */
+.login-left {
+  flex: 1;
+  color: #AA60C8;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.login-left h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.login-left p {
+  font-size: 14px;
+  max-width: 500px;
+}
+
+.illustration img {
+  margin-top: 20px;
+  width: 80%;
+}
+
+/* Right Section Styling */
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  background: linear-gradient(135deg, #AA60C8, #B7B1F2);
+  backdrop-filter: blur(10px);
+  box-shadow: -16px 8px 40px 3px rgba(0,0,0,0.75);
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 40px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: -10px 29px 52px 3px rgba(0,0,0,0.68);
+}
+
+.login-box h3 {
+  font-size: 22px;
+  color: #6a0572;
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-groups {
+  margin-bottom: 15px;
+}
+
+.input-groups input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Options (Remember Me & Forgot Password) */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #6a0572;
+}
+
+.options input {
+  margin-right: 5px;
+}
+
+.forgot-password {
+  text-decoration: none;
+  color: #6a0572;
+  font-weight: bold;
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+  margin-top: 10;
+  padding: 13px;
+  border: none;
+  border-radius: 20px;
+  background: #6a0572;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-button:hover {
+  background: #a80999;
+}
+
+/* Create Account Link */
+.register-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #6a0572;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

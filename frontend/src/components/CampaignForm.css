@@ -1,0 +1,80 @@
+.campaign-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 180px;
+ margin-bottom: 50px;
+ margin-left: 50px;
+ margin-right: 50px;
+  padding: 40px;
+  background-color: #6c5ce7;
+  border-radius: 50px;
+  box-shadow: 10px 10px 62px 18px rgba(0,0,0,0.75);
+}
+
+.campaign-form-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  box-shadow: 10px 10px 62px 18px rgba(0,0,0,0.75);
+}
+
+.campaign-form-card h2 {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: 500;
+  display: block;
+  margin: 8px 0 4px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+.campaign-btn {
+  width: 100%;
+  background: #6c5ce7;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.campaign-illustration {
+  margin-left: 40px;
+}
+
+.campaign-illustration img {
+  max-width: 470px;
+}

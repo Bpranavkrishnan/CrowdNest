@@ -1,0 +1,89 @@
+.dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .edit-profile-btn {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .dashboard-overview {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .dashboard-overview .card {
+    flex: 1;
+    padding: 20px;
+    background: #ffcc00;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .donation-history, .my-campaigns {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  .donation-history ul, .my-campaigns ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .donation-history li, .my-campaigns li {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .start-campaign-btn, .settings-btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .start-campaign-btn {
+    background: #28a745;
+    color: white;
+  }
+  
+  .settings-btn {
+    background: #dc3545;
+    color: white;
+  }
+  
