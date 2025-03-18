@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
-import UserDashboard from "./pages/UserDashboard"
+import UserDashboard from "./pages/UserDashboard";
 import NavigationBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AboutUs from "./pages/AboutUs";
@@ -11,9 +11,9 @@ import CampaignForm from "./components/CampaignForm";
 import CampaignsPage from "./pages/CampaignsPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+
 import ContactUs from "./pages/ContactUs";
-
-
+import Payment from "./pages/Payment"; // Import the payment page 
 
 function App() {
   return (
@@ -30,7 +30,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/create" element={<PrivateRoute><CampaignForm /></PrivateRoute>} />
           <Route path="/dashboard/:id" element={<UserDashboard />} />
+         
           <Route path="/campaign/:id" element={<CampaignDetails />} />
+          <Route path="/payment/:id" element={<PrivateRoute><Payment /></PrivateRoute>} />{/* New Payment Page */}
         </Routes>
         <Footer />
       </Router>

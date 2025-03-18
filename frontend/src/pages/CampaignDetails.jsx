@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Container, Card, ProgressBar, Button } from "react-bootstrap";
 import { FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 const CampaignDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [campaign, setCampaign] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -29,9 +30,9 @@ const CampaignDetails = () => {
 
     const formattedDate = new Date(campaign.createdAt).toLocaleDateString();
 
-    // Placeholder function for Donate button (No payment functionality for now)
+    // Redirect to payment page
     const handleDonateClick = () => {
-        console.log("Donate button clicked! Add payment functionality later.");
+        navigate(`/payment/${id}`);
     };
 
     return (
@@ -52,9 +53,9 @@ const CampaignDetails = () => {
 
                     {/* Progress Bar */}
                     <ProgressBar
-                        now={(campaign.raisedAmount / campaign.goal) * 100}
-                        label={`${Math.round((campaign.raisedAmount / campaign.goal) * 100)}%`}
-                    />
+    now={Math.min((campaign.raisedAmount / campaign.goal) * 100, 100)}
+    label={`${Math.round((campaign.raisedAmount / campaign.goal) * 100 * 100) / 100}%`}
+/>
 
                     {/* Share Buttons */}
                     <div className="d-flex justify-content-center mt-3">
@@ -85,11 +86,11 @@ const CampaignDetails = () => {
                         </Button>
                     </div>
 
-                    {/* Donate Button (No Functionality Yet) */}
+                    {/* Donate Button */}
                     <Button 
                         variant="primary" 
                         className="mt-3 w-100 rounded-pill"
-                        onClick={handleDonateClick} // Placeholder function
+                        onClick={handleDonateClick}
                     >
                         Donate Now
                     </Button>

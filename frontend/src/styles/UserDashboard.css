@@ -1,5 +1,6 @@
 .dashboard-container {
     max-width: 800px;
+    margin-top: 50px;
     margin: auto;
     padding: 20px;
   }
@@ -7,6 +8,8 @@
   .profile-section {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-top: 40px;
     gap: 15px;
     padding: 20px;
     background: #f9f9f9;
@@ -78,8 +81,10 @@
   }
   
   .start-campaign-btn {
-    background: #28a745;
+    margin-left: 300px;
+    background: #AA60C8;
     color: white;
+    border-radius: 20px;
   }
   
   .settings-btn {

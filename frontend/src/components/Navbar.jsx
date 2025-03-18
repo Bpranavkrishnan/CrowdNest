@@ -26,8 +26,8 @@ const NavigationBar = () => {
     <>
       {/* Announcement Bar */}
       <div className="announcement-bar text-center py-2">
-        <span>Be a savior for many. Donate monthly to help save invaluable lives in India.</span>
-        <Button variant="warning" className="donate-monthly-btn ms-2">Donate Monthly</Button>
+        <span>Be a savior for many. Donate  to help save invaluable lives in India.</span>
+        {/* <Button variant="warning" className="donate-monthly-btn ms-2">Donate Monthly</Button> */}
       </div>
 
       {/* Navigation Bar */}
@@ -56,7 +56,7 @@ const NavigationBar = () => {
               {user ? (
                 <>
                   {/* Redirect Profile to Dashboard */}
-                  <Nav.Link as={Link} to="/dashboard/:id" className="nav-item">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/dashboard/{user.id}" className="nav-item">Profile</Nav.Link>
                   <Nav.Link onClick={handleLogout} className="nav-item" style={{ cursor: "pointer" }}>Logout</Nav.Link>
                   <Button as={Link} to="/create" className="Navbutton nav-btn">
                     Make a FundRaise

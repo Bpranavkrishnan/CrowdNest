@@ -1,0 +1,92 @@
+.payment-container {
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove margin */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color */
+}
+
+.payment-card {
+    display: flex;
+    flex-direction: row; /* Arrange elements horizontally */
+    width: 80%; /* Adjust width as needed */
+    max-width: 1200px; /* Maximum width */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0; /* Added border */
+}
+
+.payment-card-left,
+.payment-card-right {
+    flex: 1; /* Equal width for both sides */
+    padding: 20px;
+}
+
+.payment-card-left {
+    border-right: 1px solid #e0e0e0; /* Divider between sections */
+}
+
+h2 {
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px; /* Added bottom margin for spacing */
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: flex-start; /* Align icons to the left */
+    margin-bottom: 20px; /* Spacing under payment icons */
+}
+
+.payment-icons img {
+    margin: 0 10px; /* Space between icons */
+    width: 400px; /* Adjusted icon size */
+    padding-top: 70px; /* Added padding for alignment */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px; /* Adjusted padding */
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Border style maintained */
+    width: 100%; /* Full width */
+}
+
+input[type="text"] {
+    width: auto; /* Allows for input type specific styling if needed */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745; /* Changed to a green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}

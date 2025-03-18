@@ -69,15 +69,19 @@ const Home = () => {
                       <p className="fw-bold">Goal: ₹{campaign.goal || "0"}</p>
 
                       {/* Progress Bar */}
-                      <div className="progress">
+                      <div className="progress" style={{ height: "20px", borderRadius: "10px", overflow: "hidden" }}>
                         <div 
                           className="progress-bar bg-success" 
                           role="progressbar"
-                          style={{ width: `${(campaign.raisedAmount / campaign.goal) * 100 || 0}%` }}
+                          style={{ width: `${(campaign.raisedAmount / campaign.goal) * 100 || 0}%`, transition: "width 0.5s ease-in-out" }}
                           aria-valuenow={campaign.raisedAmount || 0}
                           aria-valuemin="0"
                           aria-valuemax={campaign.goal || 0}
-                        ></div>
+                        >
+                          <span className="progress-bar-text" style={{ color: "white", fontWeight: "bold", padding: "0 5px" }}>
+                            {`${Math.round((campaign.raisedAmount / campaign.goal) * 100) || 0}%`}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Share Buttons */}

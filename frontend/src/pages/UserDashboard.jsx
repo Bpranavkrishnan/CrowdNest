@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import "../styles/UserDashboard.css";
-import Profileimage from "../assets/profileimage.png"
+import Profileimage from "../assets/profileimage.png";
 
 const DashboardCard = ({ title, value }) => (
   <div className="card">
@@ -19,25 +20,38 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // TODO: Replace with actual API calls
-        const donationData = [
-          { id: 1, amount: 500, campaign: "Help John", date: "2024-03-15" },
-          { id: 2, amount: 1000, campaign: "Medical Support", date: "2024-02-28" }
-        ];
-        const campaignData = [
-          { id: 101, title: "Help John's Surgery", status: "Active", amountRaised: 15000 },
-          { id: 102, title: "Education for Kids", status: "Completed", amountRaised: 30000 }
-        ];
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("No token found");
+          return;
+        }
 
-        setDonations(donationData);
-        setCampaigns(campaignData);
+        const headers = {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        };
+
+        // Fetch donations
+        const donationRes = await axios.get("http://localhost:5000/api/donations/user-donations", { headers });
+        const userDonations = donationRes.data.filter(donation => donation.userId === user.id);
+        console.log("Fetched Donations:", userDonations);
+        setDonations(userDonations);
+
+        // Fetch campaigns
+        const campaignRes = await axios.get("http://localhost:5000/api/campaigns/user-campaigns", { headers });
+        const userCampaigns = campaignRes.data.filter(campaign => campaign.userId === user.id);
+        console.log("Fetched Campaigns:", userCampaigns);
+        setCampaigns(userCampaigns);
+
       } catch (error) {
-        console.error("Error fetching dashboard data:", error);
+        console.error("Error fetching dashboard data:", error.response?.data || error.message);
       }
     };
 
-    fetchData();
-  }, []);
+    if (user) {
+      fetchData();
+    }
+  }, [user]);
 
   return (
     <div className="dashboard-container">
@@ -48,7 +62,7 @@ const UserDashboard = () => {
         <div>
           <h2>{user?.name || "User Name"}</h2>
           <p>{user?.email || "user@example.com"}</p>
-          <Link to="/profile" className="edit-profile-btn">Edit Profile</Link>
+          {/* <Link to={`/profile/${user?.id}/edit`} className="edit-profile-btn">Edit Profile</Link> */}
         </div>
       </div>
 
@@ -63,9 +77,9 @@ const UserDashboard = () => {
         <h3>Donation History</h3>
         {donations.length > 0 ? (
           <ul>
-            {donations.map(({ id, amount, campaign, date }) => (
-              <li key={id}>
-                Donated <b>₹{amount}</b> to <b>{campaign}</b> on {date}
+            {donations.map(({ _id, amount, campaign, createdAt }) => (
+              <li key={_id}>
+                Donated <b>₹{amount}</b> to <b>{campaign?.title || "Unknown Campaign"}</b> on {new Date(createdAt).toLocaleDateString()}
               </li>
             ))}
           </ul>
@@ -79,10 +93,10 @@ const UserDashboard = () => {
         <h3>My Campaigns</h3>
         {campaigns.length > 0 ? (
           <ul>
-            {campaigns.map(({ id, title, status, amountRaised }) => (
-              <li key={id}>
+            {campaigns.map(({ _id, title, status, raisedAmount }) => (
+              <li key={_id}>
                 <b>{title}</b> - <span className={`status ${status.toLowerCase()}`}>{status}</span>
-                <p>Raised: ₹{amountRaised}</p>
+                <p>Raised: ₹{raisedAmount}</p>
               </li>
             ))}
           </ul>
@@ -93,8 +107,8 @@ const UserDashboard = () => {
 
       {/* 🔹 Actions */}
       <div className="actions">
-        <Link to="/start-fundraiser" className="start-campaign-btn">Start a Fundraiser</Link>
-        <Link to="/settings" className="settings-btn">Account Settings</Link>
+        <Link to="/create" className="start-campaign-btn">Start a Fundraiser</Link>
+        
       </div>
     </div>
   );

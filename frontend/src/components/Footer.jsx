@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-top">
         <h2>Join The Impact Community!</h2>
         <div className="subscribe">
-          <input type="email" placeholder="Enter your e-mail id" />
+        
           <button onClick={() => alert('Subscribed!')}>SUBSCRIBE NOW</button>
         </div>
       </div>

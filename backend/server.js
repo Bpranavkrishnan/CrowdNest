@@ -4,7 +4,10 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import campaignRoutes from "./routes/campaignRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
-import paymentRoutes from "./routes/paymentRoutes.js"; // ✅ Added Payment Routes
+import paymentRoutes from "./routes/paymentRoute.js";
+
+
+// ✅ Added Payment Routes
 
 dotenv.config();
 
@@ -15,9 +18,10 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
+app.use("/api/payments", paymentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/campaigns", campaignRoutes);
-app.use("/api/payment/order", paymentRoutes); // ✅ Integrated Payment Routes
+
 
 // Connection to MongoDB
 mongoose
