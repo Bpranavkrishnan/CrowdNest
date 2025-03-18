@@ -18,7 +18,7 @@ const HeroSection = () => {
             <p className="hero-subtitle">
               With <strong className="zero-fee">0%*</strong> platform fee, you can raise funds too!
             </p>
-            <Button className="hero-button">Start A Free Fundraiser</Button>
+            <Button onClick={() => alert('After Login Click On "Make a FundRise Button" To Proceed')} className="hero-button">Start A Free Fundraiser</Button>
           </Col>
         </Row>
       </Container>

@@ -1,6 +1,6 @@
 import express from "express";
 import Campaign from "../models/Campaign.js";
-
+import { protect } from "../middleware/authMiddleware.js"; // E
 const router = express.Router();
 
 // Create Campaign
@@ -12,6 +12,17 @@ router.post("/create", async (req, res) => {
     res.status(201).json(newCampaign);
   } catch (error) {
     res.status(500).json({ message: "Server Error", error });
+  }
+});
+
+// ✅ Fetch campaigns by user
+router.get('/user-campaigns', protect, async (req, res) => {
+  try {
+      const campaigns = await Campaign.find({ userId: req.user._id });
+      res.json(campaigns);
+  } catch (error) {
+      console.error('Error fetching user campaigns:', error);
+      res.status(500).json({ message: 'Error fetching campaigns' });
   }
 });
 

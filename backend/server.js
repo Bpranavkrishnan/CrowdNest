@@ -4,10 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import campaignRoutes from "./routes/campaignRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
-import paymentRoutes from "./routes/paymentRoute.js";
-
-
-// ✅ Added Payment Routes
+import paymentRoutes from "./routes/paymentRoute.js"; // Ensure this matches the file name
 
 dotenv.config();
 
@@ -22,10 +19,12 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/campaigns", campaignRoutes);
 
-
 // Connection to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 

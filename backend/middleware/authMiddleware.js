@@ -8,10 +8,10 @@ export const protect = async (req, res, next) => {
     if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
         try {
             token = req.headers.authorization.split(" ")[1];
-            console.log("Received Token:", token); // 🔍 Debug
+            console.log("Received Token:", token); // Debug
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            console.log("Decoded Token:", decoded); // 🔍 Debug
+            console.log("Decoded Token:", decoded); // Debug
 
             // Ensure the decoded userId is a valid MongoDB ObjectId
             if (!mongoose.Types.ObjectId.isValid(decoded.userId)) {
@@ -19,7 +19,7 @@ export const protect = async (req, res, next) => {
             }
 
             req.user = await User.findById(decoded.userId).select("-password");
-            console.log("User Found:", req.user); // 🔍 Debug
+            console.log("User Found:", req.user); // Debug
 
             if (!req.user) {
                 return res.status(401).json({ message: "User not found, authorization denied." });
