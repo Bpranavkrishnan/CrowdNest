@@ -11,6 +11,9 @@ import CampaignForm from "./components/CampaignForm";
 import CampaignsPage from "./pages/CampaignsPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 
 import ContactUs from "./pages/ContactUs";
 import Payment from "./pages/Payment"; // Import the payment page 
@@ -33,6 +36,11 @@ function App() {
          
           <Route path="/campaign/:id" element={<CampaignDetails />} />
           <Route path="/payment/:id" element={<PrivateRoute><Payment /></PrivateRoute>} />{/* New Payment Page */}
+            {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route element={<ProtectedAdminRoute />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        </Route>
         </Routes>
         <Footer />
       </Router>

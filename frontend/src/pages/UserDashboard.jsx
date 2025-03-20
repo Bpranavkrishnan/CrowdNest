@@ -94,7 +94,7 @@ const UserDashboard = () => {
           <ul>
             {donations.map(({ _id, amount, campaign, createdAt }) => (
               <li key={_id}>
-                Donated <b>₹{amount}</b> to <b>{campaign?.title }</b> on {new Date(createdAt).toLocaleDateString()}
+                Donated <b>₹{amount}</b> to <b>{campaign?.title || "Unknown Campaign"}</b> on {new Date(createdAt).toLocaleDateString()}
               </li>
             ))}
           </ul>
@@ -110,7 +110,8 @@ const UserDashboard = () => {
           <ul>
             {campaigns.map(({ _id, title, status, raisedAmount }) => (
               <li key={_id}>
-                <b>{title}</b> - <span className={`status ${status.toLowerCase()}`}>{status}</span>
+                <b>{title}</b> - 
+                <span className={`status ${status?.toLowerCase?.() || "unknown"}`}>{status || "Unknown"}</span>
                 <p>Raised: ₹{raisedAmount}</p>
               </li>
             ))}

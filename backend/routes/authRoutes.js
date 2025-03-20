@@ -2,8 +2,12 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/UserModel.js';
+import { adminLogin } from "../controllers/adminController.js"; // Import controller
 
 const router = express.Router();
+
+// Admin Login Route
+router.post("/admin/login", adminLogin);
 
 // User Registration
 router.post('/register', async (req, res) => {
